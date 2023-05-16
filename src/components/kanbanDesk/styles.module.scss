@@ -1,0 +1,213 @@
+@import "@/styles/base.scss";
+.desk {
+  padding: 0 1rem;
+  &_header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: $brand-color;
+    }
+    h1 {
+      font-size: 28px;
+      color: $heading-black;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 20px;
+      }
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  &_panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    gap: 1rem;
+    padding: 1rem;
+    @media (max-width: 740px) {
+      grid-template-columns: 1fr;
+      &_body {
+        &:not(:first-of-type) {
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    &_body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  .status_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $border-lt-color;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: $shadow-1;
+    p {
+      b {
+        font-size: 14px;
+        color: $text-red;
+      }
+    }
+    button {
+      background-color: transparent;
+    }
+  }
+  .add_btn {
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    border: 1px solid $border-lt-color;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    &_header {
+      display: flex;
+      justify-content: space-between;
+      h4 {
+        color: $heading-black;
+        font-size: 16px;
+      }
+      p {
+        font-size: 14px;
+        color: $text-gray;
+      }
+      button {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        background: none;
+        border: 1px solid $border-lt-color;
+        border-radius: 8px;
+        color: #646464;
+        cursor: pointer;
+      }
+      form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 90%;
+        input{
+          border:1px solid $border-lt-color;
+          padding: 5px 8px;
+          border-radius: 5px;
+        }
+        button{
+          display: none;
+        }
+      }
+    }
+    &_body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 5px;
+      .card_date {
+        background-color: $bg-light-red;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      .card_img {
+        display: flex;
+
+        align-items: center;
+        gap: 5px;
+        img {
+          width: 30px;
+          height: 30px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+        span {
+          width: 30px;
+          height: 30px;
+          border: 1px solid $border-lt-color;
+          display: grid;
+          place-items: center;
+          font-size: 12px;
+          color: $text-gray;
+          border-radius: 5px;
+        }
+      }
+    }
+    &_comments {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: $text-gray;
+        svg {
+          fill: $text-gray !important;
+        }
+        &:last-of-type {
+          gap: 0;
+        }
+      }
+    }
+    &_action{
+      position: absolute;
+      background-color: $bg-white;
+      border:1px solid $border-lt-color;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      right: 60px;
+      top: 10px;
+      padding: 1rem;
+      gap: 1rem;
+      border-radius: 10px;
+      button{
+        background: none;
+        cursor: pointer;
+        padding: 5px 8px;
+        border: 1px solid $border-lt-color;
+        width: 100%;
+        &:first-of-type{
+          &:hover{
+            background-color: $green-color;
+          }
+        }
+        &:last-of-type{
+          &:hover{
+            background-color: $brand-color;
+          }
+        }
+      }
+    }
+  }
+}
