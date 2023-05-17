@@ -57,13 +57,10 @@ export default function TaskCard({ todo, status }) {
     }),
   });
 
-  const opacity = isDragging ? 2 : 1;
-
   return (
     <div
       className={`${styles.task} ${isDragging && styles.task_dragging}`}
-      ref={dragRef}
-      style={{ opacity: opacity }}>
+      ref={dragRef}>
       <div className={styles.task_header}>
         <form onSubmit={handleSave}>
           {isEditing ? (

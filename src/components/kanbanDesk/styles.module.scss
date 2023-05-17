@@ -35,6 +35,9 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
+      @media (max-width: 860px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
   .card {
@@ -88,8 +91,14 @@
         padding: 1rem;
         border-radius: 10px;
         cursor: grab;
+        &:active {
+          cursor: grabbing;
+        }
+
         &_dragging {
-          opacity: 2;
+          width: 570px;
+          transition: all;
+          display: none;
         }
 
         &_frame {
@@ -123,12 +132,14 @@
           form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
             width: 90%;
             input {
               border: 1px solid $border-lt-color;
               padding: 5px 8px;
               border-radius: 5px;
+              &:last-of-type {
+                margin-top: 1rem;
+              }
             }
             button {
               display: none;
