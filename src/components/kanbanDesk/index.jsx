@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { AiOutlineFileAdd } from "react-icons/ai";
 
 export default function KanbanDesk() {
-  const { tasks } = useSelector((state) => ({ ...state.tasks }));
+  const { tasks } = useSelector((state) => state.taskReducer);
 
   return (
     <div className={styles.desk}>
@@ -20,7 +20,7 @@ export default function KanbanDesk() {
               status={task.type}
               typeId={task.id}
               accept={task.accept}
-              title={task.type}
+              title={task.title}
               tasks={task.todoLists}
             />
           ))}

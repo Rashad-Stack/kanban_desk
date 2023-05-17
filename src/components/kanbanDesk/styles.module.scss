@@ -88,6 +88,9 @@
         padding: 1rem;
         border-radius: 10px;
         cursor: grab;
+        &_dragging {
+          opacity: 2;
+        }
 
         &_frame {
           height: 180px;

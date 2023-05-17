@@ -57,74 +57,73 @@ export default function TaskCard({ todo, status }) {
     }),
   });
 
-  return (
-    <>
-      {isDragging ? (
-        <div className={styles.task_frame}></div>
-      ) : (
-        <div className={styles.task} ref={dragRef}>
-          <div className={styles.task_header}>
-            <form onSubmit={handleSave}>
-              {isEditing ? (
-                <>
-                  <input
-                    required
-                    name="title"
-                    value={newTitle}
-                    type="text"
-                    onChange={onChangeHandler}
-                  />
-                  <input
-                    required
-                    name="category"
-                    type="text"
-                    value={newCategory}
-                    onChange={onChangeHandler}
-                  />
-                  <button />
-                </>
-              ) : (
-                <>
-                  <h4>{title}</h4>
-                  <p>{category}</p>
-                </>
-              )}
-            </form>
-            <button onClick={() => setActiveAction(!activeAction)}>
-              <RxBorderDotted />
-            </button>
-          </div>
-          <div className={styles.task_body}>
-            <div className={styles.task_date}>{date}</div>
-            {assigned.length > 0 ? (
-              <div className={styles.task_img}>
-                {assigned.slice(0, 2).map((item, i) => (
-                  <img key={i} src={item.url} />
-                ))}
+  const opacity = isDragging ? 2 : 1;
 
-                <span>+{assigned?.length - assigned.slice(0, 2)?.length}</span>
-              </div>
-            ) : (
-              <div className={styles.task_comments}>
-                <div>
-                  <GoCommentDiscussion />
-                  {comments}
-                </div>
-                <div>
-                  <RiAttachment2 />
-                  {share}
-                </div>
-              </div>
-            )}
-          </div>
-          {activeAction && (
-            <div className={styles.task_action}>
-              <button onClick={editingHandler}>Edit Task</button>
-              <button onClick={deleteHandler}>DeleteTask</button>
-            </div>
+  return (
+    <div
+      className={`${styles.task} ${isDragging && styles.task_dragging}`}
+      ref={dragRef}
+      style={{ opacity: opacity }}>
+      <div className={styles.task_header}>
+        <form onSubmit={handleSave}>
+          {isEditing ? (
+            <>
+              <input
+                required
+                name="title"
+                value={newTitle}
+                type="text"
+                onChange={onChangeHandler}
+              />
+              <input
+                required
+                name="category"
+                type="text"
+                value={newCategory}
+                onChange={onChangeHandler}
+              />
+              <button />
+            </>
+          ) : (
+            <>
+              <h4>{title}</h4>
+              <p>{category}</p>
+            </>
           )}
+        </form>
+        <button onClick={() => setActiveAction(!activeAction)}>
+          <RxBorderDotted />
+        </button>
+      </div>
+      <div className={styles.task_body}>
+        <div className={styles.task_date}>{date}</div>
+        {assigned.length > 0 ? (
+          <div className={styles.task_img}>
+            {assigned.slice(0, 2).map((item, i) => (
+              <img key={i} src={item.url} />
+            ))}
+
+            <span>+{assigned?.length - assigned.slice(0, 2)?.length}</span>
+          </div>
+        ) : (
+          <div className={styles.task_comments}>
+            <div>
+              <GoCommentDiscussion />
+              {comments}
+            </div>
+            <div>
+              <RiAttachment2 />
+              {share}
+            </div>
+          </div>
+        )}
+      </div>
+      {activeAction && (
+        <div className={styles.task_action}>
+          <button onClick={editingHandler}>Edit Task</button>
+          <button onClick={deleteHandler}>DeleteTask</button>
         </div>
       )}
-    </>
+    </div>
   );
 }

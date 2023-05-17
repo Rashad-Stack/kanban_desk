@@ -1,10 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
-import tasksSlice from "@/features/tasks/tasksSlice";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "./rootReducer";
 
-const store = configureStore({
-  reducer: {
-    tasks: tasksSlice,
-  },
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const ignoreSerializableCheckMiddleware = getDefaultMiddleware({
+  serializableCheck: false,
 });
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: ignoreSerializableCheckMiddleware,
+});
+
+export const persistor = persistStore(store);

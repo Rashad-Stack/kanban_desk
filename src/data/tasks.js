@@ -132,6 +132,7 @@
 const tasks = [
   {
     id: "af7c1fe6-d669-414e-b066-e9733f0de7a8",
+    title: "To do",
     type: "pending",
     accept: ["pending", "progress", "completed"],
     todoLists: [
@@ -157,6 +158,7 @@ const tasks = [
   },
   {
     id: "1ad1fccc-d279-46a0-8980-1d91afd6ba67",
+    title: "In progress",
     type: "progress",
     accept: ["pending", "progress", "completed"],
     todoLists: [
@@ -189,6 +191,7 @@ const tasks = [
   },
   {
     id: "8304e5ff-6324-4863-ac51-8fcbc6812b13",
+    title: "Done",
     type: "completed",
     accept: ["pending", "progress", "completed"],
     todoLists: [

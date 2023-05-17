@@ -34,6 +34,7 @@ export default function StatusCard({ title, status, tasks, typeId, accept }) {
         {tasks.map((task, index) => (
           <TaskCard key={task.id} status={status} todo={task} index={index} />
         ))}
+        {isOver && <div className={styles.task_frame}></div>}
       </div>
     </div>
   );
