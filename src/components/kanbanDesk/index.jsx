@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import StatusCard from "./StatusCard";
-import TaskCard from "./TaskCard";
 import styles from "./styles.module.scss";
 import { AiOutlineFileAdd } from "react-icons/ai";
 
@@ -15,25 +14,16 @@ export default function KanbanDesk() {
       </div>
       <div className={styles.desk_panel}>
         <div className={styles.desk_panel_body}>
-          <StatusCard title="To do" status="new" />
-          {tasks.map((todo, i) => {
-            if (todo?.status === "new") return <TaskCard key={i} todo={todo} />;
-          })}
-        </div>
-
-        <div className={styles.desk_panel_body}>
-          <StatusCard title="In progress" status="progress" />
-          {tasks.map((todo, i) => {
-            if (todo?.status === "progress")
-              return <TaskCard key={i} todo={todo} />;
-          })}
-        </div>
-        <div className={styles.desk_panel_body}>
-          <StatusCard title="Done" status="done" />
-          {tasks.map((todo, i) => {
-            if (todo?.status === "done")
-              return <TaskCard key={i} todo={todo} />;
-          })}
+          {tasks.map((task) => (
+            <StatusCard
+              key={task.id}
+              status={task.type}
+              typeId={task.id}
+              accept={task.accept}
+              title={task.type}
+              tasks={task.todoLists}
+            />
+          ))}
         </div>
       </div>
     </div>
